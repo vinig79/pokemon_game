@@ -1,4 +1,4 @@
-from data import retorno
+from temp.data import retorno
 from player import Player
 from pokemon import Pokemon, Status
 
