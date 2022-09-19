@@ -1,18 +1,21 @@
-class Player:
-    def __init__(self, nome):
-        self.nome: str = nome
-        self.pokemon: Pokemon = []
+from app import db
 
-class Pokemon:
-    def __init__(self, nome, tipo, status):
-        self.nome: str = nome
-        self.tipo: str = tipo
-        self.status: Status = status
+class Player(db.Model):    
+    __tablename__ = 'player'
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(20))
+    # Pokemon FK here
 
+class Pokemon(db.Model):
+    __tablename__ = 'pokemon'
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(30))
+    tipo = db.Column(db.String(15))
+    # Pokemon Status FK here
 
-class Status:
-    def __init__(self, hp, attack, defense, speed):
-        self.atk: int = attack
-        self.defesa: int = defense
-        self.speed: int = speed
-        self.hp: int = hp
+class Status(db.Model):
+    __tablename__ = 'status'
+    ataque = db.Column(db.Integer)
+    defesa = db.Column(db.Integer)
+    velocidade = db.Column(db.Integer)
+    vida = db.Column(db.Integer)
