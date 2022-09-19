@@ -15,6 +15,7 @@ class Pokemon(db.Model):
 
 class Status(db.Model):
     __tablename__ = 'status'
+    id = db.Column(db.Integer, primary_key=True)
     ataque = db.Column(db.Integer)
     defesa = db.Column(db.Integer)
     velocidade = db.Column(db.Integer)
