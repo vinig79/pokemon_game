@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Pokemon</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            Pokemom:
+            <a href=""></a>
+        </div>
+        {% block extende %}{% endblock %}
+    </body>
+</html>
