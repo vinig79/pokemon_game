@@ -1,4 +1,4 @@
-{% extends "login.html" %}
+{% extends "base.html" %}
 {% block content%}
     <h1>login</h1>
     <form action="" method="post" novalidate>
@@ -15,6 +15,9 @@
             {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
+        </p>
+        <p>
+            {{ form.submit()}}
         </p>
     </form>
 {% endblock %}
