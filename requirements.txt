@@ -4,3 +4,4 @@ mysql-connector-python
 requests
 flask_wtf
 email_validator
+flask_migrate
