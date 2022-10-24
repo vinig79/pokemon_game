@@ -8,6 +8,7 @@ def app():
     app.config.from_object('config.Config')
 
 
+
     db.init_app(app)
 
     from index.routes import index_bp

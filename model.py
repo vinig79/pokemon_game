@@ -21,3 +21,9 @@ class Pokemon(db.Model):
 class Tipo(db.Model):
     id_tipo = db.Column(db.Integer, primary_key=True)
     tipo = db.Column(db.String(150), nullable=False)
+
+
+class User(db.Model):
+    id_user = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(150), nullable=False)
+    email = db.Column(db.String(150), nullable=False)

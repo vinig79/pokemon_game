@@ -2,3 +2,5 @@ flask
 flask_sqlalchemy
 mysql-connector-python
 requests
+flask_wtf
+email_validator
