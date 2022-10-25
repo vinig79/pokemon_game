@@ -5,3 +5,4 @@ requests
 flask_wtf
 email_validator
 flask_migrate
+flask_login

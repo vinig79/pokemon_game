@@ -7,10 +7,12 @@
 <body>
      <header>
          <menu>
+             <p><a href="/index">index</a></p>
+             <p><a href="/login">login</a></p>
          </menu>
 
              <hr>
-             {% whit messages = get_flashed_messages() %}
+             {% with messages = get_flashed_messages() %}
              {% if messages%}
              <ul>
                  {% for message in messages%}
@@ -18,7 +20,7 @@
                  {% endfor %}
              </ul>
              {% endif %}
-             {% endwhit %}
+             {% endwith %}
 
          {% block content %}{% endblock %}
      </header>
