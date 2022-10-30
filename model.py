@@ -1,4 +1,7 @@
 from pokemon import db
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
+from pokemon import login
 
 Pok_tipo = db.Table("Pok_tipo", db.metadata,
                      db.Column("id_pok", db.ForeignKey("pokemon.id_pok"), primary_key=True),
@@ -23,9 +26,19 @@ class Tipo(db.Model):
     tipo = db.Column(db.String(150), nullable=False)
 
 
-class User(db.Model):
-    id_user = db.Column(db.Integer, primary_key=True)
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(150), nullable=False)
+    password = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), nullable=False)
 
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
 
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
