@@ -1,4 +1,9 @@
 {% extends "base.html"%}
 {% block content %}
+    {% if not image %}
+    <h1>sem foto corno </h1>
+    {% else %}
     <img src="{{ image }}" >
+
+    {% endif%}
 {% endblock %}

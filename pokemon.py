@@ -25,6 +25,8 @@ def app():
 
     from home.home import home_bp
     app.register_blueprint(home_bp)
+    from pokemons.pokemons import pokemon_bp
+    app.register_blueprint(pokemon_bp)
 
 
     with app.app_context():

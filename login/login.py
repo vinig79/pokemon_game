@@ -32,4 +32,4 @@ def index():
 @login_bp.route("/logout")
 def logout():
     logout_user()
-    return redirect("/index")
+    return redirect("/login")

@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+{% block content %}
+    <table border="1">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Nome</td>
+          <td>Tipo</td>>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pokemon in pokemon %}
+        <tr>
+          <td>{{ pokemon.id_pok }}</td>
+          <td>{{ pokemon.nome }}</td>
+            <td>
+                {% for tipo in pokemon.tipos %}
+                {{ tipo.tipo }},
+                {% endfor %}
+            </td>
+        </tr>
+      {% endfor %}
+{% endblock %}
