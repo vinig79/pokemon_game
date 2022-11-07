@@ -1,3 +1,4 @@
+from random import randint
 import requests
 from model import Pokemon, Tipo
 
@@ -58,3 +59,9 @@ def crawler(db):
         
         db.session.add(pok)
         db.session.commit()
+
+def imagem():
+    request_pokemon = requests.get('http://pokeapi.co/api/v2/pokemon/')
+    pokemons = request_pokemon.json()['results']
+    pokemon = requests.get(pokemons[randint(0, len(pokemons))]['url']).json()['sprites']['back_default']
+    return pokemon

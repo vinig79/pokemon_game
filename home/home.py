@@ -1,9 +1,11 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 from flask_login import login_required
+from model import User
+from sources.crawler import imagem
 
 home_bp = Blueprint('home', __name__)
 
 @home_bp.route('/home')
 @login_required
 def home():
-    return "home"
+    return render_template("home.html", image=imagem() )
