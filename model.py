@@ -8,6 +8,11 @@ Pok_tipo = db.Table("Pok_tipo", db.metadata,
                      db.Column("id_tipo", db.ForeignKey("tipo.id_tipo"), primary_key=True)
                      )
 
+User_pok = db.Table("User_pok",db.metadata,
+                    db.Column("id_pok", db.ForeignKey("pokemon.id_pok"), primary_key=True),
+                    db.Column("id_user", db.ForeignKey("user.id_user"), primary_key=True)
+                    )
+
 
 class Pokemon(db.Model):
     id_pok = db.Column(db.Integer, primary_key=True)
@@ -27,11 +32,14 @@ class Tipo(db.Model):
 
 
 class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
+    id_user = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(150), nullable=False)
     password = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), nullable=False)
+    favorite = db.relationship("Pokemon", secondary=User_pok, backref="pokemons")
 
+    def get_id(self):
+        return self.id_user
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
@@ -40,5 +48,5 @@ class User(db.Model, UserMixin):
 
 
 @login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+def load_user(id_user):
+    return User.query.get(int(id_user))

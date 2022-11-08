@@ -7,10 +7,14 @@
 <body>
      <header>
          <menu>
-             <p><a href="/login">login</a></p>
-             <p><a href="/register">register</a></p>
+
+             {% if current_user.is_authenticated %}
              <p><a href="/logout">logout</a></p>
              <p><a href="/pokemons" >pokemons</a></p>
+             {% else%}
+             <p><a href="/login">login</a></p>
+             <p><a href="/register">register</a></p>
+             {% endif %}
          </menu>
 
              <hr>

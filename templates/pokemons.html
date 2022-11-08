@@ -5,9 +5,11 @@
       <tr>
         <td>ID</td>
         <td>Nome</td>
-          <td>Tipo</td>>
+          <td>Tipo</td>
+          <td>Favoritar</td>
       </tr>
     </thead>
+        <form action="" method="post">
     <tbody>
       {% for pokemon in pokemon %}
         <tr>
@@ -18,6 +20,9 @@
                 {{ tipo.tipo }},
                 {% endfor %}
             </td>
+            <td >{{ form.set() }}</td>
         </tr>
       {% endfor %}
+      <p>{{ form.submit() }}</p>
+      </form>
 {% endblock %}
