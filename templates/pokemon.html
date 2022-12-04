@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+{% block content %}
+     <h1>{{ pok.nome }}</h1>
+     <p>HP:<br>{{ pok.hp }}<br>
+          ATK:<br>{{ pok.atk }}<br>
+          DEF:<br>{{ pok.defense }}<br>
+          ATK Especial:<br>{{ pok.atk_special }}<br>
+          DEF Especial:<br>{{ pok.special_defense }}<br>
+          SPEED:<br>{{ pok.speed }}
+     </p>
+{% endblock %}

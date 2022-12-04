@@ -3,13 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 db = SQLAlchemy()
-login = LoginManager()
+login_manager = LoginManager()
 
 def app():
     app = Flask(__name__)
     app.config.from_object('config.Config')
-    login.init_app(app)
-    login.login_view = "/login"
+    login_manager.init_app(app)
+    login_manager.login_view = "/login"
 
 
     db.init_app(app)

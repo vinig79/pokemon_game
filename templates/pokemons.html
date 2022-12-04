@@ -6,23 +6,23 @@
         <td>ID</td>
         <td>Nome</td>
           <td>Tipo</td>
-          <td>Favoritar</td>
+
       </tr>
     </thead>
-        <form action="" method="post">
+
     <tbody>
-      {% for pokemon in pokemon %}
+      {% for p in pokemon %}
         <tr>
-          <td>{{ pokemon.id_pok }}</td>
-          <td>{{ pokemon.nome }}</td>
+          <td>{{ p.id_pok }}</td>
+            <td><a href="/pokemon/{{p.nome}}">{{ p.nome }}</a></td>
             <td>
-                {% for tipo in pokemon.tipos %}
+                {% for tipo in p.tipos %}
                 {{ tipo.tipo }},
                 {% endfor %}
             </td>
-            <td >{{ form.set() }}</td>
+
         </tr>
       {% endfor %}
-      <p>{{ form.submit() }}</p>
-      </form>
+
+
 {% endblock %}

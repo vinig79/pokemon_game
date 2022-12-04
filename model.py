@@ -1,7 +1,8 @@
 from pokemon import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from pokemon import login
+from pokemon import login_manager
+
 
 Pok_tipo = db.Table("Pok_tipo", db.metadata,
                      db.Column("id_pok", db.ForeignKey("pokemon.id_pok"), primary_key=True),
@@ -36,8 +37,11 @@ class User(db.Model, UserMixin):
     nome = db.Column(db.String(150), nullable=False)
     password = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), nullable=False)
-    favorite = db.relationship("Pokemon", secondary=User_pok, backref="pokemons")
+    favorite = db.relationship("Pokemon", secondary=User_pok, backref="pokemon")
 
+
+    def favoriatar(self):
+        return 0
     def get_id(self):
         return self.id_user
     def set_password(self, password):
@@ -47,6 +51,6 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
 
-@login.user_loader
-def load_user(id_user):
-    return User.query.get(int(id_user))
+@login_manager.user_loader
+def user_loader(user_id):
+    return User.query.get(user_id)

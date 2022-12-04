@@ -9,9 +9,11 @@ def pokemons():
 
     form = Favorite()
     pokemon = Pokemon.query.all()
-    if form.validate_on_submit():
-        print(form.set.data)
-        print("oi")
+
 
     return render_template("pokemons.html",title="Pokemon", pokemon=pokemon, form=form)
 
+@pokemon_bp.route("/pokemon/<nome>", methods=["GET","POST"])
+def pokemon(nome):
+    pok = Pokemon.query.filter_by(nome=nome).first_or_404()
+    return render_template("pokemon.html", pok=pok)
