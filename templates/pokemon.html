@@ -8,4 +8,9 @@
           DEF Especial:<br>{{ pok.special_defense }}<br>
           SPEED:<br>{{ pok.speed }}
      </p>
+     {% if user.is_favorite(pok) %}
+        <form action="{{url_for('pokemon.pokemon',nome=pok.nome ) }}" method="post" >{{ form.favoritar }}</form>
+     {% else %}
+          <form action="{{url_for('pokemon.pokemon', nome=pok.nome ) }}" method="post">{{ form.desfavoritar }}</form>
+    {% endif %}
 {% endblock %}

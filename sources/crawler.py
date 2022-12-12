@@ -5,7 +5,7 @@ from model import Pokemon, Tipo
 def crawler(db):
     request_pokemon = requests.get('https://pokeapi.co/api/v2/pokedex/1/')
     pokemons = request_pokemon.json()['pokemon_entries']
-    if len(Pokemon.query.all()) >= len(pokemons):
+    if len(Pokemon.query.all()) >= 20:
         return
     
     print("tipo")

@@ -40,8 +40,15 @@ class User(db.Model, UserMixin):
     favorite = db.relationship("Pokemon", secondary=User_pok, backref="pokemon")
 
 
-    def favoriatar(self):
-        return 0
+    def is_favorite(self, pokemon):
+        if not pokemon in self.favorite:
+            return True
+        return False
+    def favoritar(self, pokemon):
+        self.favorite.append(pokemon)
+
+    def desfavoritar(self, pokemon):
+        self.favorite.remove(pokemon)
     def get_id(self):
         return self.id_user
     def set_password(self, password):
