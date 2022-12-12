@@ -9,8 +9,10 @@
          <menu>
 
              {% if current_user.is_authenticated %}
+             <p><a href="/home">home</a></p>
              <p><a href="/logout">logout</a></p>
              <p><a href="/pokemons" >pokemons</a></p>
+             <p><a href="{{ url_for('pokemon.favorito') }}">Favorito</a></p>
              {% else%}
              <p><a href="/login">login</a></p>
              <p><a href="/register">register</a></p>

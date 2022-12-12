@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+{% block content %}
+    <table border="1">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Nome</td>
+          <td>Tipo</td>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for p in user.favorite %}
+        <tr>
+          <td>{{ p.id_pok }}</td>
+            <td><a href="/pokemon/{{p.nome}}">{{ p.nome }}</a></td>
+            <td>
+                {% for tipo in p.tipos %}
+                {{ tipo.tipo }},
+                {% endfor %}
+            </td>
+
+        </tr>
+      {% endfor %}
+
+
+{% endblock %}

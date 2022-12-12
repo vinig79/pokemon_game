@@ -33,3 +33,8 @@ def pokemon(nome):
             db.session.commit()
             flash("Desfavoritado")
     return render_template("pokemon.html", pok=pok, user=user, form=form)
+
+@pokemon_bp.route("/favorito",methods=["GET","POST"])
+def favorito():
+    user = current_user
+    return render_template("favorito.html",user=user)
